@@ -1,0 +1,626 @@
+/* ========================================== */
+/* 1. THEME & GLOBAL RESETS                   */
+/* ========================================== */
+:root {
+  --color-navy: #1C252E;
+  --color-cream: #ECE8E1;
+  --color-gold: #C8A96A;
+  --color-dark-slate: #11161A;
+  --color-white: #FFFFFF;
+  --color-text-body: #555555;
+  --color-border: #E2E2E2;
+  
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FAFAFA;
+  color: var(--color-dark-slate);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; 
+}
+
+/* ========================================== */
+/* 2. NAVBAR                                  */
+/* ========================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--color-white);
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--color-navy);
+}
+
+.nav-logo-graphic { width: 32px; height: 32px; }
+
+.nav-logo-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.nav-logo-light { font-weight: 400; color: var(--color-gold); }
+
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+
+.nav-link {
+  font-size: 1.00rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active { color: var(--color-gold); }
+
+.nav-btn {
+  background-color: var(--color-navy);
+  border: 1px solid var(--color-navy);
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px;
+  color: var(--color-white);
+}
+
+.nav-btn:hover {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* ========================================== */
+/* 3. SPLIT SCREEN LAYOUT                     */
+/* ========================================== */
+.vizion-consultation-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  padding-top: 80px;
+}
+
+/* ========================================== */
+/* 4. LEFT PANEL: FORM                        */
+/* ========================================== */
+.form-panel {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}
+
+.form-inner {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 3rem 4rem;
+}
+
+/* Header / Progress */
+.form-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.step-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#stepIndicator {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-body);
+}
+
+.progress-bar-container {
+  width: 140px;
+  height: 3px;
+  background-color: var(--color-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-gold);
+  transition: width 0.4s ease;
+}
+
+.security-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.security-badge svg { width: 14px; height: 14px; }
+
+/* Typography */
+.overline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+.overline-no-border { border-top: none; padding-top: 0; }
+
+.form-heading {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-navy);
+  margin-bottom: 1rem;
+}
+
+.form-heading em {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.form-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-body);
+  margin-bottom: 2.5rem;
+}
+
+/* Steps Transition */
+.form-step { display: none; }
+.form-step.active {
+  display: block;
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================== */
+/* 5. FORM ELEMENTS                           */
+/* ========================================== */
+
+/* Step 1: Grid Cards */
+.selection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.vizion-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.vizion-card input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.card-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+.card-desc { font-size: 0.8rem; color: #777; line-height: 1.4; }
+
+.vizion-card:hover .card-content {
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 12px rgba(200, 169, 106, 0.1);
+}
+
+.vizion-card input:checked ~ .card-content {
+  border-color: var(--color-gold);
+  background-color: rgba(200, 169, 106, 0.05);
+  box-shadow: 0 4px 12px rgba(200, 169, 106, 0.15);
+}
+
+.vizion-card input:checked ~ .card-content .card-title {
+  color: var(--color-gold);
+}
+
+/* Step 2: List Rows */
+.list-style { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.vizion-radio-row {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--color-white);
+}
+
+.vizion-radio-row input { position: absolute; opacity: 0; }
+
+.radio-indicator {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  margin-right: 1.25rem;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.row-text { font-size: 0.95rem; font-weight: 500; color: var(--color-navy); }
+
+.vizion-radio-row:hover { border-color: var(--color-gold); }
+
+.vizion-radio-row input:checked ~ .radio-indicator { border-color: var(--color-gold); }
+
+.vizion-radio-row input:checked ~ .radio-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+.vizion-radio-row:has(input:checked) {
+  border-color: var(--color-gold);
+  background-color: rgba(200, 169, 106, 0.05);
+}
+
+/* Step 3: Inputs */
+.input-group { margin-bottom: 1.5rem; }
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.req { color: #e74c3c; }
+.opt { font-weight: 400; color: #999; }
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  background-color: #FAFAFA;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: var(--color-gold);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.1);
+}
+
+.input-group textarea { resize: vertical; }
+
+/* Step 4: Unique Date & Time Elements */
+.unique-date-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.date-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input-wrapper input[type="date"] {
+  width: 100%;
+  padding: 1.25rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-navy);
+  background-color: var(--color-cream); /* Unique cream background */
+  border: 1px solid rgba(200, 169, 106, 0.4); /* Gold border */
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Hide default browser calendar icon */
+  -webkit-appearance: none;
+}
+
+.date-input-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0; /* Hide default icon but keep it clickable */
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.date-input-wrapper input[type="date"]:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200, 169, 106, 0.15);
+}
+
+.date-icon {
+  position: absolute;
+  right: 1.25rem;
+  pointer-events: none; /* Let clicks pass through to the input */
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+}
+.date-icon svg { width: 20px; height: 20px; }
+
+/* Time Selection Grid */
+.time-grid {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+}
+.time-grid .full-width { grid-column: 1 / -1; }
+
+.vizion-time-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.vizion-time-card input {
+  position: absolute;
+  opacity: 0;
+}
+
+.time-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.time-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.time-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.2rem;
+}
+.time-desc { font-size: 0.8rem; color: #777; }
+
+.vizion-time-card:hover .time-content {
+  border-color: var(--color-gold);
+}
+
+.vizion-time-card input:checked ~ .time-content {
+  border-color: var(--color-gold);
+  background-color: rgba(200, 169, 106, 0.05);
+}
+.vizion-time-card input:checked ~ .time-content .time-title {
+  color: var(--color-gold);
+}
+
+/* ========================================== */
+/* 6. BUTTONS                                 */
+/* ========================================== */
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.btn-text:hover { color: var(--color-navy); }
+
+.btn-primary {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.btn-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #25D366;
+  color: var(--color-white);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-whatsapp:hover {
+  background-color: #1ebe59;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+}
+.btn-whatsapp svg { width: 20px; height: 20px; }
+
+/* ========================================== */
+/* 7. RIGHT PANEL: BRAND DYNAMIC AREA         */
+/* ========================================== */
+.brand-panel {
+  background-color: var(--color-navy);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.brand-panel::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 80%; height: 80%;
+  background: radial-gradient(circle, rgba(200, 169, 106, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.brand-graphic {
+  width: 80px; height: 80px;
+  margin-bottom: 2rem;
+  animation: floatGraphic 6s ease-in-out infinite;
+}
+
+@keyframes floatGraphic {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.brand-graphic svg { width: 100%; height: 100%; }
+
+.brand-dynamic-text { min-height: 200px; }
+
+.brand-dynamic-text h2 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+}
+
+.brand-dynamic-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.brand-footer {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ========================================== */
+/* 8. RESPONSIVE                              */
+/* ========================================== */
+@media (max-width: 1024px) {
+  .vizion-consultation-wrapper {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+  .brand-panel { display: none; }
+  .form-inner { padding: 2rem 1.5rem; }
+  .form-heading { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .selection-grid { grid-template-columns: 1fr; }
+  .time-grid { grid-template-columns: 1fr; }
+  .form-header-meta { margin-bottom: 2rem; }
+  .form-footer { flex-direction: column-reverse; gap: 1rem; }
+  .btn-primary, .btn-whatsapp { width: 100%; justify-content: center; }
+}

@@ -1,0 +1,301 @@
+/* ========================================== */
+/* VIZION FINANCE — THANK YOU PAGE            */
+/* Standalone stylesheet (no dependencies)    */
+/* ========================================== */
+
+/* ---------- 1. Theme tokens ---------- */
+:root {
+  --color-navy: #1C252E;
+  --color-cream: #ECE8E1;
+  --color-gold: #C8A96A;
+  --color-dark-slate: #11161A;
+
+  --color-text-white: #FFFFFF;
+  --color-text-body: #D1D5DB;
+  --color-text-muted: #888888;
+
+  --font-serif: 'Playfair Display', Baskerville, 'Times New Roman', serif;
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --page-padding-x: 5vw;
+  --page-padding-y: 6rem;
+}
+
+/* ---------- 2. Base reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- 3. Page shell ---------- */
+.thankyou-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 169, 106, 0.14), transparent 55%),
+    var(--color-navy);
+  padding: 5rem var(--page-padding-x) 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative gold rules */
+.thankyou-page::before,
+.thankyou-page::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18%;
+  max-width: 260px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 169, 106, 0.55), transparent);
+  pointer-events: none;
+}
+.thankyou-page::before { left: 4%; }
+.thankyou-page::after  { right: 4%; }
+
+/* ---------- 4. Logo ---------- */
+.thankyou-logo {
+  height: 96px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 3rem;
+  display: block;
+}
+
+/* ---------- 5. Content column ---------- */
+.thankyou-content {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 6. Animated check icon ---------- */
+.thankyou-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 169, 106, 0.45);
+  background: linear-gradient(135deg, rgba(200, 169, 106, 0.18), rgba(200, 169, 106, 0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--color-gold);
+  animation: softPop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.thankyou-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawCheck 0.8s 0.35s ease forwards;
+}
+
+@keyframes softPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- 7. Typography ---------- */
+.thankyou-overline {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.25rem;
+}
+
+.thankyou-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text-white);
+  margin-bottom: 1.5rem;
+}
+.thankyou-title em {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.thankyou-text {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--color-text-body);
+  max-width: 520px;
+  margin-bottom: 2.75rem;
+}
+
+/* ---------- 8. Action buttons ---------- */
+
+/* Primary: gold filled (self-contained .intro-btn) */
+.intro-btn {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+.intro-btn:hover {
+  background-color: var(--color-text-white);
+  color: var(--color-navy);
+  transform: translateY(-2px);
+}
+
+/* Secondary: gold outline */
+.thankyou-btn-secondary {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 2.25rem;
+  text-decoration: none;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  background: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+.thankyou-btn-secondary:hover {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+  transform: translateY(-2px);
+}
+
+/* Button row */
+.thankyou-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+/* Align .intro-btn inside the flex row (override align-self) */
+.thankyou-actions .intro-btn {
+  align-self: center;
+}
+
+/* ---------- 9. Quick contact strip ---------- */
+.thankyou-contact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 560px;
+}
+
+.thankyou-contact-strip a {
+  color: var(--color-text-body);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+.thankyou-contact-strip a:hover {
+  color: var(--color-gold);
+}
+
+.thankyou-contact-strip svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  opacity: 0.85;
+}
+
+/* ---------- 10. Footer ---------- */
+.thankyou-footer {
+  margin-top: auto;
+  padding-top: 4rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- 11. Responsive ---------- */
+@media (max-width: 600px) {
+  .thankyou-page {
+    padding: 3.5rem 1.25rem 3rem;
+  }
+  .thankyou-logo {
+    height: 72px;
+    margin-bottom: 2.25rem;
+  }
+  .thankyou-icon {
+    width: 68px;
+    height: 68px;
+  }
+  .thankyou-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  .thankyou-page::before,
+  .thankyou-page::after {
+    display: none;
+  }
+  .thankyou-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .thankyou-actions > * {
+    width: 100%;
+    text-align: center;
+  }
+}

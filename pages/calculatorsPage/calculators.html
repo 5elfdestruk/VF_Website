@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Calculators | Vizion Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="calculators.css">
+</head>
+<body id="top">
+  <header class="navbar">
+    <div class="nav-container">
+      <img src="/media/white vertical lock-up.png" alt="Vizion Finance Logo" class="nav-logo-graphic">
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="../homepage/home.html" class="nav-link">Home</a>
+        <a href="../aboutpage/about.html" class="nav-link">About</a>
+        <a href="../servicespage/services.html" class="nav-link">Services</a>
+        <a href="./calculators.html" class="nav-link active">Calculators</a>
+        <a href="../vacancypage/vacancies.html" class="nav-link">Careers</a>
+        <a href="../blogpage/blog.html" class="nav-link">Blog</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="../contactpage/contact.html" class="nav-link nav-btn">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="calculator-hero">
+      <p class="calculator-overline">Planning tools</p>
+      <h1>Retirement <em>Calculators.</em></h1>
+      <p>Explore how regular contributions may build retirement savings, and how a living-annuity drawdown may affect capital over time.</p>
+    </section>
+
+    <nav class="calculator-tabs" aria-label="Choose calculator">
+      <button class="calculator-tab active" type="button" data-tab="retirement-annuity">Retirement Annuity</button>
+      <button class="calculator-tab" type="button" data-tab="living-annuity">Living Annuity / Retirement Income</button>
+    </nav>
+
+    <section class="calculator-shell" id="retirement-annuity" aria-labelledby="ra-heading">
+      <div class="calculator-heading">
+        <p class="calculator-overline">Build your retirement savings</p>
+        <h2 id="ra-heading">Retirement Annuity Calculator</h2>
+      </div>
+
+      <form id="ra-form" novalidate>
+        <div class="field-grid">
+          <div class="form-field">
+            <label for="ra-age">Current age</label>
+            <input id="ra-age" name="age" type="number" min="18" max="65" step="1" placeholder="e.g. 35">
+            <small class="field-error" data-error-for="ra-age"></small>
+          </div>
+          <div class="form-field">
+            <label for="ra-income">Gross monthly income</label>
+            <input id="ra-income" name="income" type="text" inputmode="decimal" placeholder="R 0">
+            <small>Context only — this calculator does not calculate a tax refund.</small>
+            <small class="field-error" data-error-for="ra-income"></small>
+          </div>
+          <div class="form-field">
+            <label for="ra-contribution">Monthly retirement contribution</label>
+            <input id="ra-contribution" name="contribution" type="text" inputmode="decimal" placeholder="R 0">
+            <small>Amount you intend to contribute each month.</small>
+            <small class="field-error" data-error-for="ra-contribution"></small>
+          </div>
+          <fieldset class="form-field strategy-field">
+            <legend>Investment strategy</legend>
+            <select id="ra-strategy" name="strategy">
+              <option value="moderate">Moderate</option>
+            </select>
+            <small id="ra-assumption">Moderate: 5% inflation and 3.5% real annual return; nominal return is calculated using Fisher's formula.</small>
+          </fieldset>
+        </div>
+
+        <fieldset class="savings-question">
+          <legend>Do you currently have any savings for retirement?</legend>
+          <div class="radio-row">
+            <label><input type="radio" name="hasSavings" value="yes"> Yes</label>
+            <label><input type="radio" name="hasSavings" value="no" checked> No</label>
+          </div>
+        </fieldset>
+        <div class="form-field existing-savings" id="existing-savings-wrap" hidden>
+          <label for="ra-savings">Current total retirement savings</label>
+          <input id="ra-savings" name="savings" type="text" inputmode="decimal" placeholder="R 0">
+          <small class="field-error" data-error-for="ra-savings"></small>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Calculate</button>
+          <button class="secondary-button" id="ra-reset" type="button">Reset</button>
+        </div>
+      </form>
+
+      <div class="results" id="ra-results" hidden aria-live="polite">
+        <div class="result-summary">
+          <div><span>Projected value at age 65</span><strong id="ra-total">—</strong></div>
+          <div><span>Value in today's money</span><strong id="ra-real">—</strong></div>
+          <div><span>Years until retirement</span><strong id="ra-years">—</strong></div>
+        </div>
+        <div class="breakdown-grid">
+          <div><span>Existing retirement savings</span><strong id="ra-existing">—</strong></div>
+          <div><span>Future contributions</span><strong id="ra-future-contributions">—</strong></div>
+          <div><span>Total contributions paid</span><strong id="ra-total-contributions">—</strong></div>
+          <div><span>Estimated investment growth</span><strong id="ra-growth">—</strong></div>
+        </div>
+        <div class="chart-panel">
+          <h3>Projected retirement savings</h3>
+          <canvas id="ra-chart" height="280" role="img" aria-label="Projected retirement savings chart"></canvas>
+        </div>
+        <p class="assumption-note">The projection assumes monthly compounding and an inflation-linked monthly contribution, with no fees, tax, withdrawals or contribution interruptions. Higher expected returns generally involve higher investment risk and are not guaranteed.</p>
+        <p class="tax-note">Qualifying retirement-fund deductions may attract tax deductions under section 11F of the Income Tax Act, subject to applicable SARS limits and individual circumstances. Please consult a suitably qualified financial adviser.</p>
+      </div>
+    </section>
+
+    <section class="calculator-shell" id="living-annuity" aria-labelledby="la-heading" hidden>
+      <div class="calculator-heading">
+        <p class="calculator-overline">Illustrate retirement income</p>
+        <h2 id="la-heading">Living Annuity / Retirement Income</h2>
+        <p class="annuity-disclaimer-label">This is an illustrative living annuity projection, not a guaranteed life-annuity quotation.</p>
+      </div>
+
+      <form id="la-form" novalidate>
+        <div class="field-grid">
+          <div class="form-field">
+            <label for="la-age">Current age</label>
+            <input id="la-age" type="number" min="18" max="54" step="1" placeholder="e.g. 55">
+            <small class="field-error" data-error-for="la-age"></small>
+          </div>
+          <div class="form-field">
+            <label for="la-retirement-age">Retirement age</label>
+            <input id="la-retirement-age" type="number" min="55" max="65" step="1" placeholder="e.g. 65">
+            <small class="field-error" data-error-for="la-retirement-age"></small>
+          </div>
+          <div class="form-field full-width">
+            <label for="la-capital">Total investment at retirement</label>
+            <input id="la-capital" type="text" inputmode="decimal" placeholder="R 0">
+            <a class="inline-link" href="./calculators.html#retirement-annuity" id="ra-link">Use the Retirement Annuity Calculator to estimate this amount</a>
+            <small class="field-error" data-error-for="la-capital"></small>
+          </div>
+          <div class="form-field full-width">
+            <label for="la-drawdown">Annual drawdown: <strong id="la-drawdown-value">4.5%</strong></label>
+            <input id="la-drawdown" type="range" min="2.5" max="17.5" step="0.1" value="4.5">
+            <div class="range-limits"><span>2.5%</span><span>17.5%</span></div>
+            <small>Drawdown limits are subject to legislation and may change. The appropriate rate depends on your circumstances, returns and expected retirement period.</small>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Calculate</button>
+          <button class="secondary-button" id="la-reset" type="button">Reset</button>
+        </div>
+      </form>
+
+      <div class="results" id="la-results" hidden aria-live="polite">
+        <div class="result-summary">
+          <div><span>Initial monthly income</span><strong id="la-monthly">—</strong></div>
+          <div><span>Initial annual income</span><strong id="la-annual">—</strong></div>
+        </div>
+        <div class="scenario-grid">
+          <div class="scenario"><span>7% average market scenario</span><strong id="la-duration-7">—</strong></div>
+          <div class="scenario"><span>9% good market scenario</span><strong id="la-duration-9">—</strong></div>
+        </div>
+        <div class="chart-panel">
+          <h3>Projected remaining capital</h3>
+          <canvas id="la-chart" height="280" role="img" aria-label="Living annuity remaining capital chart"></canvas>
+        </div>
+        <p class="assumption-note">These are illustrative projected capital-depletion periods under fixed 7% and 9% nominal annual investment-growth scenarios. Income is paid monthly, investment growth is applied first, and monthly income increases annually by 5% inflation.</p>
+      </div>
+    </section>
+
+    <section class="financial-disclaimer">
+      <p id="ra-disclaimer">These calculations are estimates for educational and illustrative purposes only. They are based on assumptions about investment returns, inflation and contributions, which may change over time. Actual investment performance is not guaranteed, and fees, taxes and individual circumstances may affect the outcome. This calculator does not constitute financial, investment, tax or legal advice. Please consult a suitably qualified financial adviser before making financial decisions.</p>
+      <p id="la-disclaimer">A living annuity does not guarantee income for life. You carry investment and longevity risk, and withdrawals may reduce your retirement capital. The applicable annual drawdown limits are subject to legislation and may change.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main"><p>© 2026 Vizion Finance. FSP 55651 | Licensed Financial Services Provider</p></div>
+  </footer>
+  <script src="calculators.js"></script>
+</body>
+</html>

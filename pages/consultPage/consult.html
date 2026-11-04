@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start a Conversation | Vizion Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="consult.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/pages/homepage/home.html" class="nav-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="nav-logo-graphic">
+          <polygon points="50,10 80,40 50,80" fill="#2B2BFF"/>
+          <polygon points="50,80 20,60 50,40" fill="#11161A"/>
+          <polygon points="60,20 75,20 65,35" fill="#D3C1A5"/>
+        </svg>
+        <span class="nav-logo-text">VIZION <span class="nav-logo-light">FINANCE</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="../homepage/home.html" class="nav-link">Home</a>
+        <a href="../aboutpage/about.html" class="nav-link">About</a>
+        <a href="../servicespage/services.html" class="nav-link">Services</a>
+        <a href="../calculatorspage/calculators.html" class="nav-link">Calculators</a>
+        <a href="../vacancypage/vacancies.html" class="nav-link">Careers</a>
+        <a href="../blogpage/blog.html" class="nav-link">Blog</a>
+        <a href="../contactpage/contact.html" class="nav-btn active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN SPLIT INTERFACE -->
+  <main class="vizion-consultation-wrapper">
+    
+    <!-- LEFT SIDE: FORM PANEL -->
+    <section class="form-panel">
+      <div class="form-inner">
+        
+        <!-- Progress & Security -->
+        <div class="form-header-meta">
+          <div class="step-tracker">
+            <span id="stepIndicator">Step 1 of 4</span>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+          </div>
+          <span class="security-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Secure & Private
+          </span>
+        </div>
+
+        <form id="vizionForm" onsubmit="return false;">
+          
+          <!-- STEP 1: THE GOAL -->
+          <div class="form-step active" data-step="1">
+            <p class="overline overline-no-border">Your Vision</p>
+            <h1 class="form-heading">What are you looking to <em>achieve?</em></h1>
+            <p class="form-desc">Select the area where you need the most clarity right now. You can always expand your plan later.</p>
+
+            <div class="selection-grid">
+              <label class="vizion-card">
+                <input type="radio" name="goal" value="Build & Protect Wealth">
+                <div class="card-content">
+                  <span class="card-icon">📈</span>
+                  <span class="card-title">Build & Protect Wealth</span>
+                  <span class="card-desc">Investments, savings, and portfolio growth.</span>
+                </div>
+              </label>
+
+              <label class="vizion-card">
+                <input type="radio" name="goal" value="Retirement Planning">
+                <div class="card-content">
+                  <span class="card-icon">⏳</span>
+                  <span class="card-title">Retirement Planning</span>
+                  <span class="card-desc">Ensure a comfortable and secure future.</span>
+                </div>
+              </label>
+
+              <label class="vizion-card">
+                <input type="radio" name="goal" value="Family & Estate Protection">
+                <div class="card-content">
+                  <span class="card-icon">🛡️</span>
+                  <span class="card-title">Family & Estate Protection</span>
+                  <span class="card-desc">Wills, trusts, and risk management.</span>
+                </div>
+              </label>
+
+              <label class="vizion-card">
+                <input type="radio" name="goal" value="Business & Corporate">
+                <div class="card-content">
+                  <span class="card-icon">🏢</span>
+                  <span class="card-title">Business & Corporate</span>
+                  <span class="card-desc">Employee benefits and corporate structuring.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 2: THE CONTEXT -->
+          <div class="form-step" data-step="2">
+            <p class="overline overline-no-border">Your Journey</p>
+            <h1 class="form-heading">Where are you currently <em>positioned?</em></h1>
+            <p class="form-desc">Understanding your current life stage helps us pair you with an advisor who specialises in your needs.</p>
+
+            <div class="selection-grid list-style">
+              <label class="vizion-radio-row">
+                <input type="radio" name="stage" value="Early Career / Growing">
+                <span class="radio-indicator"></span>
+                <span class="row-text">Early Career / Growing</span>
+              </label>
+              <label class="vizion-radio-row">
+                <input type="radio" name="stage" value="Building a Family / Mid-Career">
+                <span class="radio-indicator"></span>
+                <span class="row-text">Building a Family / Mid-Career</span>
+              </label>
+              <label class="vizion-radio-row">
+                <input type="radio" name="stage" value="Established Professional">
+                <span class="radio-indicator"></span>
+                <span class="row-text">Established Professional</span>
+              </label>
+              <label class="vizion-radio-row">
+                <input type="radio" name="stage" value="Approaching Retirement">
+                <span class="radio-indicator"></span>
+                <span class="row-text">Approaching Retirement</span>
+              </label>
+              <label class="vizion-radio-row">
+                <input type="radio" name="stage" value="Already Retired">
+                <span class="radio-indicator"></span>
+                <span class="row-text">Already Retired</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 3: THE DETAILS -->
+          <div class="form-step" data-step="3">
+            <p class="overline overline-no-border">Your Details</p>
+            <h1 class="form-heading">Let's start the <em>conversation.</em></h1>
+            <p class="form-desc">Leave your details below so we know who we're speaking with.</p>
+
+            <div class="input-group">
+              <label for="firstName">First Name <span class="req">*</span></label>
+              <input type="text" id="firstName" name="firstName" placeholder="e.g. Thabo" required autocomplete="given-name">
+            </div>
+
+            <div class="input-group">
+              <label for="contactNumber">WhatsApp Number <span class="req">*</span></label>
+              <input type="tel" id="contactNumber" name="contactNumber" placeholder="e.g. 082 123 4567" required autocomplete="tel">
+            </div>
+
+            <div class="input-group">
+              <label for="userNote">Anything specific you'd like us to know? <span class="opt">(Optional)</span></label>
+              <textarea id="userNote" name="userNote" rows="3" placeholder="e.g. I'm looking to consolidate my policies..."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 4: DATE & TIME (NEW) -->
+          <div class="form-step" data-step="4">
+            <p class="overline overline-no-border">Scheduling</p>
+            <h1 class="form-heading">When would suit you <em>best?</em></h1>
+            <p class="form-desc">Choose a preferred date and time window. The team will confirm the exact appointment with you on WhatsApp.</p>
+
+            <div class="input-group unique-date-group">
+              <label for="preferredDate">Preferred Date <span class="opt">(Optional)</span></label>
+              <div class="date-input-wrapper">
+                <input type="date" id="preferredDate" name="preferredDate">
+                <span class="date-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="selection-grid time-grid">
+              <label class="vizion-time-card">
+                <input type="radio" name="timeWindow" value="Morning (09:00 – 12:00)">
+                <div class="time-content">
+                  <span class="time-icon">🌅</span>
+                  <span class="time-title">Morning</span>
+                  <span class="time-desc">09:00 – 12:00</span>
+                </div>
+              </label>
+              
+              <label class="vizion-time-card">
+                <input type="radio" name="timeWindow" value="Afternoon (12:00 – 17:00)">
+                <div class="time-content">
+                  <span class="time-icon">☀️</span>
+                  <span class="time-title">Afternoon</span>
+                  <span class="time-desc">12:00 – 17:00</span>
+                </div>
+              </label>
+
+              <label class="vizion-time-card full-width">
+                <input type="radio" name="timeWindow" value="No time preference">
+                <div class="time-content">
+                  <span class="time-icon">🕰️</span>
+                  <span class="time-title">No time preference</span>
+                  <span class="time-desc">I am flexible with the time</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- NAVIGATION BUTTONS -->
+          <div class="form-footer">
+            <button type="button" class="btn-text" id="btnPrev" style="opacity: 0; pointer-events: none;">
+              &larr; Back
+            </button>
+            
+            <button type="button" class="btn-primary" id="btnNext">
+              Continue
+            </button>
+
+            <button type="button" class="btn-whatsapp" id="btnSubmit" style="display: none;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.87 11.87 0 0 0 12.06 0C5.48 0 .11 5.37.11 11.94c0 2.1.55 4.15 1.59 5.96L0 24l6.26-1.64a11.96 11.96 0 0 0 5.8 1.77h.01c6.58 0 11.93-5.37 11.93-11.94 0-3.19-1.24-6.18-3.48-8.42Zm-8.46 18.38h-.01a9.93 9.93 0 0 1-5.08-1.39l-.36-.22-3.72.97 1-3.63-.24-.37A9.9 9.9 0 0 1 2.12 12c0-5.49 4.47-9.96 9.94-9.96 2.66 0 5.16 1.04 7.03 2.91a9.92 9.92 0 0 1 2.92 7.05c0 5.49-4.47 9.96-9.95 9.96Zm5.46-7.45c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.47.13-.62.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.19-.24-.57-.49-.49-.67-.5l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.08.15.2 2.1 3.21 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.18-1.42-.08-.12-.27-.2-.57-.35Z"/></svg>
+              Request on WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDE: BRAND VISUAL PANEL -->
+    <section class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-graphic">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,10 80,40 50,80" fill="rgba(200, 169, 106, 0.4)"/>
+            <polygon points="50,80 20,60 50,40" fill="rgba(255,255,255,0.05)"/>
+            <polygon points="60,20 75,20 65,35" fill="rgba(255,255,255,0.2)"/>
+          </svg>
+        </div>
+        
+        <div class="brand-dynamic-text">
+          <h2 id="dynamicBrandTitle">Clarity is the first step to wealth.</h2>
+          <p id="dynamicBrandDesc">You are moments away from connecting with an advisor who can help turn your vision into a structured financial reality.</p>
+        </div>
+
+        <div class="brand-footer">
+          <p>FSP 55651 | Licensed Financial Services Provider</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentStep = 1;
+      const totalSteps = 4;
+
+      const formSteps = document.querySelectorAll('.form-step');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const btnSubmit = document.getElementById('btnSubmit');
+      const progressFill = document.getElementById('progressFill');
+      const stepIndicator = document.getElementById('stepIndicator');
+      
+      // Dynamic Brand Text Elements
+      const brandTitle = document.getElementById('dynamicBrandTitle');
+      const brandDesc = document.getElementById('dynamicBrandDesc');
+
+      // Text to update on the right panel based on step
+      const brandContent = {
+        1: { title: "Clarity is the first step to wealth.", desc: "You are moments away from connecting with an advisor who can help turn your vision into a structured financial reality." },
+        2: { title: "Tailored advice for your season.", desc: "Our advisors specialise in different life stages. By telling us where you are, we ensure you speak to the right expert." },
+        3: { title: "Let's talk about your future.", desc: "Your details are kept strictly private. We use this only to connect with you on WhatsApp and prepare for our chat." },
+        4: { title: "A request first. A confirmed time next.", desc: "Pick a day and time window that works for you. We'll send a WhatsApp to confirm the exact appointment time." }
+      };
+
+      function updateUI() {
+        // 1. Update visible step
+        formSteps.forEach(step => {
+          step.classList.remove('active');
+          if (parseInt(step.dataset.step) === currentStep) {
+            step.classList.add('active');
+          }
+        });
+
+        // 2. Update progress bar & text
+        const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+        progressFill.style.width = `${progressPercentage}%`;
+        stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
+
+        // 3. Update buttons
+        if (currentStep === 1) {
+          btnPrev.style.opacity = '0';
+          btnPrev.style.pointerEvents = 'none';
+          btnNext.style.display = 'inline-flex';
+          btnSubmit.style.display = 'none';
+        } else if (currentStep === totalSteps) {
+          btnPrev.style.opacity = '1';
+          btnPrev.style.pointerEvents = 'auto';
+          btnNext.style.display = 'none';
+          btnSubmit.style.display = 'inline-flex';
+        } else {
+          btnPrev.style.opacity = '1';
+          btnPrev.style.pointerEvents = 'auto';
+          btnNext.style.display = 'inline-flex';
+          btnSubmit.style.display = 'none';
+        }
+
+        // 4. Update right-side dynamic text
+        brandTitle.textContent = brandContent[currentStep].title;
+        brandDesc.textContent = brandContent[currentStep].desc;
+        
+        // Animate text change
+        brandTitle.style.animation = 'none';
+        brandDesc.style.animation = 'none';
+        void brandTitle.offsetWidth; // trigger reflow
+        brandTitle.style.animation = 'fadeIn 0.5s ease forwards';
+        brandDesc.style.animation = 'fadeIn 0.5s ease forwards';
+      }
+
+      // Navigation Logic
+      btnNext.addEventListener('click', () => {
+        if (currentStep < totalSteps) {
+          
+          // Basic validation for Step 3 before moving to step 4
+          if (currentStep === 3) {
+            const firstName = document.getElementById('firstName').value.trim();
+            const phone = document.getElementById('contactNumber').value.trim();
+            if (!firstName || !phone) {
+              alert("Please enter your name and WhatsApp number to continue.");
+              return;
+            }
+          }
+
+          currentStep++;
+          updateUI();
+        }
+      });
+
+      btnPrev.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateUI();
+        }
+      });
+
+      // Auto-advance logic for radio selections (Steps 1, 2, and 4)
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          // Small delay so user sees the selection before sliding
+          setTimeout(() => {
+            if (currentStep < totalSteps) {
+              // Don't auto advance if they are on step 3 (inputs) or step 4 (final submission)
+              if (currentStep !== 3 && currentStep !== 4) {
+                currentStep++;
+                updateUI();
+              }
+            }
+          }, 400);
+        });
+      });
+
+      // Final Submission via WhatsApp
+      btnSubmit.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Gather form data
+        const firstName = document.getElementById('firstName').value.trim();
+        const phone = document.getElementById('contactNumber').value.trim();
+        const goal = document.querySelector('input[name="goal"]:checked')?.value || "Not specified";
+        const stage = document.querySelector('input[name="stage"]:checked')?.value || "Not specified";
+        const note = document.getElementById('userNote').value.trim();
+        
+        // Date & Time Data
+        const dateInput = document.getElementById('preferredDate').value;
+        const timeWindow = document.querySelector('input[name="timeWindow"]:checked')?.value || "No preference";
+        
+        // Format date nicely (e.g., 25 Oct 2026) if selected
+        let formattedDate = "Not specified";
+        if (dateInput) {
+          const dateObj = new Date(dateInput);
+          formattedDate = dateObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        // Format the WhatsApp Message
+        const waNumber = "27645010877";
+        const message = `Hi Vizion Finance, I'd like to request a consultation.\n\n*Name:* ${firstName}\n*Phone:* ${phone}\n*Focus Area:* ${goal}\n*Life Stage:* ${stage}\n*Preferred Date:* ${formattedDate}\n*Preferred Time:* ${timeWindow}${note ? `\n\n*Note:* ${note}` : ''}`;
+        
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/${waNumber}?text=${encodedMessage}`, '_blank');
+      });
+
+    });
+  </script>
+</body>
+</html>

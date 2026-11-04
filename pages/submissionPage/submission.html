@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Vizion Finance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+ 
+  <!-- Thank-you page specific styles -->
+  <link rel="stylesheet" href="submission.css">
+</head>
+<body>
+
+  <main class="thankyou-page">
+
+    <!-- Centered logo -->
+    <img
+      src="/media/white vertical lock-up.png"
+      alt="Vizion Finance Logo"
+      class="thankyou-logo"
+    >
+
+    <div class="thankyou-content">
+
+      <!-- Animated check -->
+      <div class="thankyou-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <polyline points="4 12.5 9.5 18 20 6.5"></polyline>
+        </svg>
+      </div>
+
+      <p class="thankyou-overline">Submission received</p>
+
+      <h1 class="thankyou-title">
+        Thank you — we’ll be <em>in contact</em> soon.
+      </h1>
+
+      <p class="thankyou-text">
+        Your inquiry has reached our team at Vizion Finance. One of our advisors will review your message and get back to you within one business day.
+      </p>
+
+      <div class="thankyou-actions">
+        <a href="../homepage/home.html" class="intro-btn">Back to Home</a>
+        <a href="../servicespage/services.html" class="thankyou-btn-secondary">Explore Services</a>
+
+      </div>
+
+      <p class="thankyou-redirect-note">
+            Redirecting you to the home page in <span id="countdown">4</span> seconds…
+    </p>
+
+      <!-- Quick contact strip -->
+      <div class="thankyou-contact-strip">
+        <a href="tel:+27645010877">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.5 15.5 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+          </svg>
+          064 501 8077
+        </a>
+        <a href="mailto:info@vizionfinance.co.za">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+          </svg>
+          info@vizionfinance.co.za
+        </a>
+      </div>
+
+      <p class="thankyou-footer">
+        © 2026 Vizion Finance. All rights reserved. &nbsp;|&nbsp; FSP 55651
+      </p>
+
+    </div>
+  </main>
+
+ 
+
+<script>
+  (function () {
+    const seconds = 4;
+    const el = document.getElementById('countdown');
+    let remaining = seconds;
+
+    // Tick the countdown down once per second
+    const tick = setInterval(function () {
+      remaining--;
+      if (el) el.textContent = remaining;
+      if (remaining <= 0) clearInterval(tick);
+    }, 1000);
+
+    // Redirect after 4 seconds
+    setTimeout(function () {
+      window.location.href = "../homepage/home.html";
+    }, seconds * 1000);
+  })();
+</script>
+
+</body>
+</html>

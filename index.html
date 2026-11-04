@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | Vizion Finance</title>
+
+  <!-- No-JS fallback: redirects after 5s if JavaScript is disabled -->
+  <noscript>
+    <meta http-equiv="refresh" content="5;url=/pages/homePage/home.html">
+  </noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="welcome-page" id="welcomePage">
+
+    <!-- Centered logo -->
+    <img
+      src="/media/white vertical lock-up.png"
+      alt="Vizion Finance Logo"
+      class="welcome-logo"
+    >
+
+    <div class="welcome-content">
+
+      <p class="welcome-overline">Welcome</p>
+
+      <h1 class="welcome-title">
+        Built on <em>heritage.</em><br>
+        Driven by innovation.
+      </h1>
+
+      <p class="welcome-text">
+        Empowering your financial future with the security of a global institution
+        and the personal touch of a bespoke consultancy.
+      </p>
+
+      <!-- Redirect notice + progress bar -->
+      <div class="welcome-redirect-box" id="redirectBox">
+        <p class="welcome-redirect-note">
+          Redirecting you in <span id="countdown">5</span> seconds…
+        </p>
+        <div class="welcome-progress">
+          <div class="welcome-progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Skip button -->
+      <a href="/pages/homePage/home.html"
+         class="welcome-skip-btn"
+         id="skipBtn">
+        Skip and continue now
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="4" y1="12" x2="19" y2="12"></line>
+          <polyline points="13 6 19 12 13 18"></polyline>
+        </svg>
+      </a>
+
+      <p class="welcome-footer">
+        © 2026 Vizion Finance. All rights reserved. &nbsp;|&nbsp; FSP 55651
+      </p>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      // ============================================
+      // 1. SET YOUR REDIRECT DESTINATION HERE
+      // ============================================
+      const DESTINATION = "/pages/homePage/home.html";
+
+      // ============================================
+      // 2. SET THE DELAY (in seconds)
+      // ============================================
+      const SECONDS = 5;
+
+      const countdownEl  = document.getElementById("countdown");
+      const progressBar  = document.getElementById("progressBar");
+      const welcomePage  = document.getElementById("welcomePage");
+      const redirectBox  = document.getElementById("redirectBox");
+      const skipBtn      = document.getElementById("skipBtn");
+
+      let remaining = SECONDS;
+      let finished  = false;
+
+      // Start progress bar at 0%
+      progressBar.style.width = "0%";
+
+      // Trigger the fade + redirect
+      function go() {
+        if (finished) return;
+        finished = true;
+
+        // Fade out the page
+        welcomePage.classList.add("fade-out");
+
+        // Redirect after fade completes (matches CSS transition duration)
+        setTimeout(function () {
+          window.location.href = DESTINATION;
+        }, 450);
+      }
+
+      // Tick every second: update countdown + progress
+      const tick = setInterval(function () {
+        remaining--;
+        if (countdownEl) countdownEl.textContent = Math.max(remaining, 0);
+
+        // Progress = how much time has elapsed
+        const pct = ((SECONDS - remaining) / SECONDS) * 100;
+        progressBar.style.width = pct + "%";
+
+        if (remaining <= 0) {
+          clearInterval(tick);
+          go();
+        }
+      }, 1000);
+
+      // Skip button cancels the timer and redirects immediately
+      skipBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        clearInterval(tick);
+        finished = true;
+        welcomePage.classList.add("fade-out");
+        setTimeout(function () {
+          window.location.href = DESTINATION;
+        }, 450);
+      });
+    })();
+  </script>
+
+</body>
+</html>
